@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pirsos
+  namespace: pirsos
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: HostRegexp(`pirsos.xyz`, `{subdomain:[a-z]+}.pirsos.xyz`) && PathPrefix(`/.well-known`)
+      kind: Rule
+      services:
+        - name: pirsos
+          namespace: pirsos
+          port: 5000

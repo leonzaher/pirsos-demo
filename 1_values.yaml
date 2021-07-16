@@ -1,0 +1,9 @@
+caBundle:
+
+config:
+  identity:
+    commonName:
+
+  providers:
+    - name: default
+      type: acme
